@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
+#include <unistd.h>
 
 #define FOOD -1
 
@@ -18,11 +19,13 @@ class Snake{
 
 	public:
 		Snake(int h, int w);
+		int time_usec;
 		void move_up();
 		void move_down();
 		void move_left();
 		void move_right();
 		bool notOver;
+		void refresh_game();
 	
 	private:
 		matrix map;
@@ -31,14 +34,13 @@ class Snake{
 		int snake_length;
 		enum Orientation orientation;
 
-		void refresh_screen();
+		void draw_map();
 		void spawn_food();
 		void decreases_one();
 		void move();
 		void game_over();
 		
 };
-
 
 
 
