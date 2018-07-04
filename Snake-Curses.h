@@ -5,24 +5,38 @@
 #include <curses.h>
 #include <vector>
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 
+#define FOOD -1
 
 typedef std::vector< std::vector<int> > matrix;
 
+enum Orientation {LEFT, RIGHT, UP, DOWN};
 
 class Snake{
 
 	public:
 		Snake(int h, int w);
-		
+		void move_up();
+		void move_down();
+		void move_left();
+		void move_right();
+		bool notOver;
 	
 	private:
 		matrix map;
 		int height, width;
 		int head_i, head_j;
-		int tail_i, tail_j;
-		void Refresh_Screen();
-	
+		int snake_length;
+		enum Orientation orientation;
+
+		void refresh_screen();
+		void spawn_food();
+		void decreases_one();
+		void move();
+		void game_over();
+		
 };
 
 
